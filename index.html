@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            margin-top: 70px;
+            color: #7A7870;
+            background-color: #FAFAF8;
+            font-family: "Source Serif 4", serif;
+        }
+
+        /* NAV */
+        .main-nav {
+            background-color: #FAFAF8;
+            padding: 0 60px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 999;
+            border-bottom: 1px solid #E4E2DC;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: "Playfair Display", serif;
+            font-size: 20px;
+            color: #1A1916;
+            text-decoration: none;
+            font-style: italic;
+        }
+
+        .main-nav nav a {
+            text-decoration: none;
+            padding: 0 20px;
+            color: #7A7870;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .main-nav nav a:hover { color: #1A1916; }
+
+        /* SECTIONS */
+        section {
+            padding: 100px 60px;
+            border-bottom: 1px solid #E4E2DC;
+        }
+
+        /* LABEL */
+        .label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #2B5CE6;
+            margin-bottom: 24px;
+        }
+
+        /* HERO */
+        #hero { padding: 120px 60px 100px; }
+
+        #hero h1 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(52px, 8vw, 96px);
+            color: #1A1916;
+            line-height: 1.0;
+            letter-spacing: -0.02em;
+            margin-bottom: 24px;
+        }
+
+        #hero h1 em {
+            font-style: italic;
+            color: #7A7870;
+        }
+
+        #hero .bio {
+            width: 40%;
+            min-width: 280px;
+            line-height: 1.8;
+            font-size: 16px;
+            margin-bottom: 36px;
+            font-weight: 300;
+        }
+
+        /* BUTTONS */
+        .button {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            height: 40px;
+            padding: 0 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            font-family: "Source Serif 4", serif;
+            cursor: pointer;
+            transition: opacity 0.2s, background 0.2s;
+            border: none;
+        }
+
+        .btn-black {
+            background-color: #1A1916;
+            color: #FAFAF8;
+        }
+
+        .btn-black:hover { background-color: #333; }
+
+        .btn-white {
+            background-color: transparent;
+            color: #1A1916;
+            border: 1px solid #C0BEB8;
+        }
+
+        .btn-white:hover { background-color: #F3F2EE; }
+
+        /* ABOUT */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .about-text h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 36px;
+            color: #1A1916;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            font-size: 15px;
+            line-height: 1.85;
+            margin-bottom: 16px;
+            font-weight: 300;
+        }
+
+        /* SKILLS */
+        .skills-title {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #1A1916;
+            margin-bottom: 16px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .skill-item {
+            padding: 14px 0;
+            border-bottom: 1px solid #E4E2DC;
+        }
+
+        .skill-item:nth-last-child(-n+2) { border-bottom: none; }
+
+        .skill-name {
+            font-size: 14px;
+            font-weight: 500;
+            color: #1A1916;
+            display: block;
+        }
+
+        .skill-level {
+            font-size: 12px;
+            color: #7A7870;
+        }
+
+        /* EXPERIENCE */
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 40px;
+            padding: 40px 0;
+            border-bottom: 1px solid #E4E2DC;
+        }
+
+        .timeline-item:last-child { border-bottom: none; }
+
+        .tl-meta { padding-top: 4px; }
+
+        .tl-period {
+            font-size: 13px;
+            color: #7A7870;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .tl-badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #2B5CE6;
+            background: #EBF0FD;
+            padding: 3px 10px;
+            border-radius: 4px;
+        }
+
+        .tl-content h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 22px;
+            color: #1A1916;
+            margin-bottom: 4px;
+        }
+
+        .tl-company {
+            font-size: 14px;
+            color: #7A7870;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .tl-content ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .tl-content ul li {
+            font-size: 14px;
+            color: #7A7870;
+            padding-left: 16px;
+            position: relative;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        .tl-content ul li::before {
+            content: '–';
+            position: absolute;
+            left: 0;
+            color: #C0BEB8;
+        }
+
+        /* PROJECTS */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: #E4E2DC;
+            border: 1px solid #E4E2DC;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .project-card {
+            background: #FAFAF8;
+            padding: 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: background 0.2s;
+        }
+
+        .project-card:hover { background: #F3F2EE; }
+
+        .project-icon { font-size: 28px; margin-bottom: 4px; }
+
+        .project-card h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 20px;
+            color: #1A1916;
+        }
+
+        .project-card p {
+            font-size: 14px;
+            line-height: 1.75;
+            font-weight: 300;
+            flex: 1;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .tag {
+            font-size: 11px;
+            font-weight: 500;
+            color: #4A4840;
+            background: #EDECE8;
+            padding: 3px 10px;
+            border-radius: 4px;
+        }
+
+        /* EDUCATION */
+        .edu-item {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 40px;
+            padding: 36px 0;
+            border-bottom: 1px solid #E4E2DC;
+        }
+
+        .edu-item:last-child { border-bottom: none; }
+
+        .edu-year {
+            font-size: 13px;
+            color: #7A7870;
+            padding-top: 4px;
+        }
+
+        .edu-body h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 20px;
+            color: #1A1916;
+            margin-bottom: 4px;
+        }
+
+        .edu-school {
+            font-size: 14px;
+            color: #7A7870;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .edu-note {
+            font-size: 13px;
+            color: #7A7870;
+            font-weight: 300;
+        }
+
+        /* CONTACT */
+        #contact {
+            text-align: center;
+            padding: 120px 60px;
+            border-bottom: none;
+        }
+
+        #contact h2 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(36px, 5vw, 60px);
+            color: #1A1916;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        #contact h2 em { font-style: italic; color: #7A7870; }
+
+        #contact p {
+            font-size: 16px;
+            font-weight: 300;
+            max-width: 400px;
+            margin: 0 auto 36px;
+            line-height: 1.75;
+        }
+
+        #contact .button { justify-content: center; }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid #E4E2DC;
+            padding: 24px 60px;
+            text-align: center;
+            font-size: 13px;
+            color: #7A7870;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            section, #hero, #contact { padding: 80px 24px; }
+            .main-nav { padding: 0 24px; }
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .timeline-item, .edu-item { grid-template-columns: 1fr; gap: 8px; }
+            .projects-grid { grid-template-columns: 1fr; }
+            #hero .bio { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <div class="main-nav">
+        <a href="#hero" class="nav-logo">Shwe Yee</a>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </div>
+
+    <!-- HERO -->
+    <section id="hero">
+        <p class="label">Frontend Developer</p>
+        <h1>Shwe Yee Phyo Aung</h1>
+        <p class="bio">ICT graduate from Rangsit University with hands-on experience building and deploying web interfaces and internal tools. Passionate about clean design and writing code that works.</p>
+        <div class="button">
+            <a href="mailto:[your.email@email.com]" class="btn btn-black">Get in touch</a>
+            <a href="https://github.com/shweyeephyoaung304-lab" class="btn btn-white" target="_blank">GitHub</a>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <p class="label">About</p>
+        <div class="about-grid">
+            <div class="about-text">
+                <h2>Building things for the web</h2>
+                <p>I'm a frontend developer based in Thailand, recently graduated with a degree in Information and Communication Technology from Rangsit University.</p>
+                <p>During my internship I built and deployed real products — redesigning a company website with full hosting setup, and developing an attendance system with check-in/check-out functionality connected to a SQL database.</p>
+                <p>I hold a PCEP certification in Python and I'm always expanding my skill set.</p>
+            </div>
+            <div>
+                <p class="skills-title">Skills</p>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <span class="skill-name">HTML & CSS</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">JavaScript</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Bootstrap</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Python</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">SQL</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Git & GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+        <p class="label">Experience</p>
+        <div class="timeline-item">
+            <div class="tl-meta">
+                <span class="tl-period">2025 · 4 months</span>
+                <span class="tl-badge">Internship</span>
+            </div>
+            <div class="tl-content">
+                <h3>Frontend Developer Intern</h3>
+                <span class="tl-company">Asia Connect Consulting and Trading Company</span>
+                <ul>
+                    <li>Redesigned and developed the company website from scratch, then handled the full hosting and deployment process to get it live</li>
+                    <li>Built an Attendance System with check-in and check-out functionality, connected to a SQL database to store and track employee records</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <p class="label">Projects</p>
+        <div class="projects-grid">
+            <div class="project-card">
+                
+                <h3>Company Website</h3>
+                <p>Designed, built, and deployed the company's public-facing website. Handled the full process from frontend development to hosting setup, ensuring the site was live, responsive, and production-ready.</p>
+                <div class="tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Bootstrap</span>
+                    <span class="tag">Hosting</span>
+                </div>
+            </div>
+            <div class="project-card">
+                
+                <h3>Attendance System</h3>
+                <p>Web-based attendance tracker with employee check-in and check-out. Records are stored and managed through a SQL database, allowing the team to monitor attendance history and generate reports.</p>
+                <div class="tags">
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+        <p class="label">Education & Certifications</p>
+        <div class="edu-item">
+            <div class="edu-year">2019</div>
+            <div class="edu-body">
+                <h3>Diploma in Web Development (DWD)</h3>
+                <span class="edu-school">KMD, Yangon</span>
+            </div>
+        </div>
+        <div class="edu-item">
+            <div class="edu-year">2022 – Dec 2026</div>
+            <div class="edu-body">
+                <h3>B.Sc. Information and Communication Technology</h3>
+                <span class="edu-school">Rangsit University, Thailand</span>
+                <p class="edu-note">Relevant coursework: Web Development, Database Systems, UI/UX Design, Software Engineering</p>
+            </div>
+        </div>
+        <div class="edu-item">
+            <div class="edu-year">2025</div>
+            <div class="edu-body">
+                <h3>PCEP — Certified Entry-Level Python Programmer</h3>
+                <span class="edu-school">Python Institute</span>
+            </div>
+        </div>
+        <div class="edu-item">
+            <div class="edu-year">2025</div>
+            <div class="edu-body">
+                <h3>Raspberry Pi For Beginners</h3>
+                <span class="edu-school">Udemy</span>
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <h2>Let's work<br>together.</h2>
+        <p>I'm open to junior frontend roles. Feel free to reach out.</p>
+        <div class="button">
+            <a href="mailto:shweyeephyoaung304@gmail.com" class="btn btn-black">Send an email</a>
+            <a href="https://github.com/shweyeephyoaung304-lab" class="btn btn-white" target="_blank">GitHub</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>Built by Shwe Yee · 2026</p>
+    </footer>
+
+</body>
+</html>
