@@ -7,403 +7,100 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            margin-top: 70px;
-            color: #7A7870;
-            background-color: #FAFAF8;
-            font-family: "Source Serif 4", serif;
-        }
-
-        /* NAV */
-        .main-nav {
-            background-color: #FAFAF8;
-            padding: 0 60px;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 999;
-            border-bottom: 1px solid #E4E2DC;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .nav-logo {
-            font-family: "Playfair Display", serif;
-            font-size: 20px;
-            color: #1A1916;
-            text-decoration: none;
-            font-style: italic;
-        }
-
-        .main-nav nav a {
-            text-decoration: none;
-            padding: 0 20px;
-            color: #7A7870;
-            font-size: 14px;
-            transition: color 0.2s;
-        }
-
-        .main-nav nav a:hover { color: #1A1916; }
-
-        /* SECTIONS */
-        section {
-            padding: 100px 60px;
-            border-bottom: 1px solid #E4E2DC;
-        }
-
-        /* LABEL */
-        .label {
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: #2B5CE6;
-            margin-bottom: 24px;
-        }
-
-        /* HERO */
-        #hero { padding: 120px 60px 100px; }
-
-        #hero h1 {
-            font-family: "Playfair Display", serif;
-            font-size: clamp(52px, 8vw, 96px);
-            color: #1A1916;
-            line-height: 1.0;
-            letter-spacing: -0.02em;
-            margin-bottom: 24px;
-        }
-
-        #hero h1 em {
-            font-style: italic;
-            color: #7A7870;
-        }
-
-        #hero .bio {
-            width: 40%;
-            min-width: 280px;
-            line-height: 1.8;
-            font-size: 16px;
-            margin-bottom: 36px;
-            font-weight: 300;
-        }
-
-        /* BUTTONS */
-        .button {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            height: 40px;
-            padding: 0 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 14px;
-            font-family: "Source Serif 4", serif;
-            cursor: pointer;
-            transition: opacity 0.2s, background 0.2s;
-            border: none;
-        }
-
-        .btn-black {
-            background-color: #1A1916;
-            color: #FAFAF8;
-        }
-
-        .btn-black:hover { background-color: #333; }
-
-        .btn-white {
-            background-color: transparent;
-            color: #1A1916;
-            border: 1px solid #C0BEB8;
-        }
-
-        .btn-white:hover { background-color: #F3F2EE; }
-
-        /* ABOUT */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: start;
-        }
-
-        .about-text h2 {
-            font-family: "Playfair Display", serif;
-            font-size: 36px;
-            color: #1A1916;
-            line-height: 1.2;
-            letter-spacing: -0.01em;
-            margin-bottom: 20px;
-        }
-
-        .about-text p {
-            font-size: 15px;
-            line-height: 1.85;
-            margin-bottom: 16px;
-            font-weight: 300;
-        }
-
-        /* SKILLS */
-        .skills-title {
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: #1A1916;
-            margin-bottom: 16px;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-        }
-
-        .skill-item {
-            padding: 14px 0;
-            border-bottom: 1px solid #E4E2DC;
-        }
-
-        .skill-item:nth-last-child(-n+2) { border-bottom: none; }
-
-        .skill-name {
-            font-size: 14px;
-            font-weight: 500;
-            color: #1A1916;
-            display: block;
-        }
-
-        .skill-level {
-            font-size: 12px;
-            color: #7A7870;
-        }
-
-        /* EXPERIENCE */
-        .timeline-item {
-            display: grid;
-            grid-template-columns: 180px 1fr;
-            gap: 40px;
-            padding: 40px 0;
-            border-bottom: 1px solid #E4E2DC;
-        }
-
-        .timeline-item:last-child { border-bottom: none; }
-
-        .tl-meta { padding-top: 4px; }
-
-        .tl-period {
-            font-size: 13px;
-            color: #7A7870;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .tl-badge {
-            display: inline-block;
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: #2B5CE6;
-            background: #EBF0FD;
-            padding: 3px 10px;
-            border-radius: 4px;
-        }
-
-        .tl-content h3 {
-            font-family: "Playfair Display", serif;
-            font-size: 22px;
-            color: #1A1916;
-            margin-bottom: 4px;
-        }
-
-        .tl-company {
-            font-size: 14px;
-            color: #7A7870;
-            margin-bottom: 16px;
-            display: block;
-        }
-
-        .tl-content ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .tl-content ul li {
-            font-size: 14px;
-            color: #7A7870;
-            padding-left: 16px;
-            position: relative;
-            font-weight: 300;
-            line-height: 1.7;
-        }
-
-        .tl-content ul li::before {
-            content: '–';
-            position: absolute;
-            left: 0;
-            color: #C0BEB8;
-        }
-
-        /* PROJECTS */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1px;
-            background: #E4E2DC;
-            border: 1px solid #E4E2DC;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .project-card {
-            background: #FAFAF8;
-            padding: 36px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            transition: background 0.2s;
-        }
-
-        .project-card:hover { background: #F3F2EE; }
-
-        .project-icon { font-size: 28px; margin-bottom: 4px; }
-
-        .project-card h3 {
-            font-family: "Playfair Display", serif;
-            font-size: 20px;
-            color: #1A1916;
-        }
-
-        .project-card p {
-            font-size: 14px;
-            line-height: 1.75;
-            font-weight: 300;
-            flex: 1;
-        }
-
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 8px;
-        }
-
-        .tag {
-            font-size: 11px;
-            font-weight: 500;
-            color: #4A4840;
-            background: #EDECE8;
-            padding: 3px 10px;
-            border-radius: 4px;
-        }
-
-        /* EDUCATION */
-        .edu-item {
-            display: grid;
-            grid-template-columns: 180px 1fr;
-            gap: 40px;
-            padding: 36px 0;
-            border-bottom: 1px solid #E4E2DC;
-        }
-
-        .edu-item:last-child { border-bottom: none; }
-
-        .edu-year {
-            font-size: 13px;
-            color: #7A7870;
-            padding-top: 4px;
-        }
-
-        .edu-body h3 {
-            font-family: "Playfair Display", serif;
-            font-size: 20px;
-            color: #1A1916;
-            margin-bottom: 4px;
-        }
-
-        .edu-school {
-            font-size: 14px;
-            color: #7A7870;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .edu-note {
-            font-size: 13px;
-            color: #7A7870;
-            font-weight: 300;
-        }
-
-        /* CONTACT */
-        #contact {
-            text-align: center;
-            padding: 120px 60px;
-            border-bottom: none;
-        }
-
-        #contact h2 {
-            font-family: "Playfair Display", serif;
-            font-size: clamp(36px, 5vw, 60px);
-            color: #1A1916;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            margin-bottom: 16px;
-        }
-
-        #contact h2 em { font-style: italic; color: #7A7870; }
-
-        #contact p {
-            font-size: 16px;
-            font-weight: 300;
-            max-width: 400px;
-            margin: 0 auto 36px;
-            line-height: 1.75;
-        }
-
-        #contact .button { justify-content: center; }
-
-        /* FOOTER */
-        footer {
-            border-top: 1px solid #E4E2DC;
-            padding: 24px 60px;
-            text-align: center;
-            font-size: 13px;
-            color: #7A7870;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            section, #hero, #contact { padding: 80px 24px; }
-            .main-nav { padding: 0 24px; }
-            .about-grid { grid-template-columns: 1fr; gap: 40px; }
-            .timeline-item, .edu-item { grid-template-columns: 1fr; gap: 8px; }
-            .projects-grid { grid-template-columns: 1fr; }
-            #hero .bio { width: 100%; }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <!-- NAV -->
     <div class="main-nav">
-        <a href="#hero" class="nav-logo">Shwe Yee</a>
+        <a href="#hero" class="nav-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 80" class="waiting-girl">
+              <ellipse cx="30" cy="78" rx="11" ry="2" fill="rgba(0,0,0,0.08)"/>
+              <g class="char-body">
+                <!-- hair back -->
+                <ellipse cx="30" cy="22" rx="18" ry="19" fill="#7C2D12"/>
+                <rect x="12" y="24" width="5" height="16" rx="2.5" fill="#7C2D12"/>
+                <rect x="43" y="24" width="5" height="16" rx="2.5" fill="#7C2D12"/>
+                <!-- legs -->
+                <rect x="21.5" y="62" width="7" height="11" rx="3.5" fill="#FECDD3"/>
+                <rect x="31.5" y="62" width="7" height="11" rx="3.5" fill="#FECDD3"/>
+                <!-- shoes -->
+                <ellipse cx="25" cy="73" rx="6" ry="2.8" fill="#7C3AED"/>
+                <ellipse cx="35" cy="73" rx="6" ry="2.8" fill="#7C3AED"/>
+                <!-- skirt -->
+                <path d="M15 51 Q30 48 45 51 L43 65 Q30 68 17 65Z" fill="#C4B5FD"/>
+                <!-- torso -->
+                <rect x="18" y="40" width="24" height="14" rx="5" fill="#A78BFA"/>
+                <path d="M22 41 L30 48 L38 41" fill="white" opacity="0.35"/>
+                <!-- arms -->
+                <path d="M18 45 Q8 48 9 57" stroke="#A78BFA" stroke-width="7" stroke-linecap="round" fill="none"/>
+                <circle cx="11" cy="58" r="4.5" fill="#FECDD3"/>
+                <path d="M42 45 Q52 48 51 57" stroke="#A78BFA" stroke-width="7" stroke-linecap="round" fill="none"/>
+                <circle cx="49" cy="58" r="4.5" fill="#FECDD3"/>
+                <!-- neck -->
+                <rect x="25" y="36" width="10" height="7" rx="2" fill="#FECDD3"/>
+                <!-- head -->
+                <circle cx="30" cy="22" r="16" fill="#FECDD3"/>
+                <!-- hair front -->
+                <path d="M14 18 Q17 5 30 4 Q43 5 46 18 Q41 11 30 11 Q19 11 14 18Z" fill="#92400E"/>
+                <path d="M14 16 Q13 20 14 24" stroke="#92400E" stroke-width="3" stroke-linecap="round" fill="none"/>
+                <path d="M46 16 Q47 20 46 24" stroke="#92400E" stroke-width="3" stroke-linecap="round" fill="none"/>
+                <!-- eyes -->
+                <g class="char-eyes">
+                  <ellipse cx="22" cy="23" rx="5" ry="6" fill="white"/>
+                  <ellipse cx="38" cy="23" rx="5" ry="6" fill="white"/>
+                  <circle cx="22" cy="24" r="3.8" fill="#7C3AED"/>
+                  <circle cx="38" cy="24" r="3.8" fill="#7C3AED"/>
+                  <circle cx="22" cy="24.5" r="2" fill="#1C1917"/>
+                  <circle cx="38" cy="24.5" r="2" fill="#1C1917"/>
+                  <circle cx="23.5" cy="21.5" r="1.8" fill="white"/>
+                  <circle cx="39.5" cy="21.5" r="1.8" fill="white"/>
+                  <circle cx="20.5" cy="25" r="0.7" fill="white" opacity="0.7"/>
+                  <circle cx="36.5" cy="25" r="0.7" fill="white" opacity="0.7"/>
+                  <path d="M17 17.5 Q22 15 27 17.5" stroke="#6B21A8" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+                  <path d="M33 17.5 Q38 15 43 17.5" stroke="#6B21A8" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+                </g>
+                <!-- blink overlay -->
+                <g class="char-blink" style="opacity:0">
+                  <ellipse cx="22" cy="23" rx="5.5" ry="6.5" fill="#FECDD3"/>
+                  <path d="M17 23 Q22 29 27 23" fill="#FECDD3" stroke="#92400E" stroke-width="1.2"/>
+                  <ellipse cx="38" cy="23" rx="5.5" ry="6.5" fill="#FECDD3"/>
+                  <path d="M33 23 Q38 29 43 23" fill="#FECDD3" stroke="#92400E" stroke-width="1.2"/>
+                </g>
+                <!-- blush -->
+                <ellipse cx="14" cy="27" rx="4.5" ry="2.5" fill="#FDA4AF" opacity="0.6"/>
+                <ellipse cx="46" cy="27" rx="4.5" ry="2.5" fill="#FDA4AF" opacity="0.6"/>
+                <!-- mouth -->
+                <path d="M26 31 Q30 35.5 34 31" stroke="#F472B6" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+                <!-- bow -->
+                <path d="M23 6 L19 2 L30 6 L41 2 L37 6Z" fill="#F9A8D4"/>
+                <circle cx="30" cy="6" r="2.5" fill="#EC4899"/>
+              </g>
+            </svg>
+        </a>
         <nav>
             <a href="#about">About</a>
             <a href="#experience">Experience</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
+            <button id="mode-toggle" class="toggle-switch" title="Toggle dark mode">
+                <div class="toggle-circle">
+                    <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <line x1="12" y1="2" x2="12" y2="4"></line>
+                        <line x1="12" y1="20" x2="12" y2="22"></line>
+                        <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line>
+                        <line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line>
+                        <line x1="2" y1="12" x2="4" y2="12"></line>
+                        <line x1="20" y1="12" x2="22" y2="12"></line>
+                        <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line>
+                        <line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line>
+                    </svg>
+                </div>
+            </button>
         </nav>
     </div>
 
@@ -413,7 +110,7 @@
         <h1>Shwe Yee Phyo Aung</h1>
         <p class="bio">ICT graduate from Rangsit University with hands-on experience building and deploying web interfaces and internal tools. Passionate about clean design and writing code that works.</p>
         <div class="button">
-            <a href="mailto:[your.email@email.com]" class="btn btn-black">Get in touch</a>
+            <a href="mailto:shweyeephyoaung304@gmail.com" class="btn btn-black">Get in touch</a>
             <a href="https://github.com/shweyeephyoaung304-lab" class="btn btn-white" target="_blank">GitHub</a>
         </div>
     </section>
@@ -425,7 +122,7 @@
             <div class="about-text">
                 <h2>Building things for the web</h2>
                 <p>I'm a frontend developer based in Thailand, recently graduated with a degree in Information and Communication Technology from Rangsit University.</p>
-                <p>During my internship I built and deployed real products — redesigning a company website with full hosting setup, and developing an attendance system with check-in/check-out functionality connected to a SQL database.</p>
+                <p>During my internship I built and deployed real products redesigning a company website with full hosting setup, and developing an attendance system with check-in/check-out functionality connected to a SQL database.</p>
                 <p>I hold a PCEP certification in Python and I'm always expanding my skill set.</p>
             </div>
             <div>
@@ -478,7 +175,6 @@
         <p class="label">Projects</p>
         <div class="projects-grid">
             <div class="project-card">
-                
                 <h3>Company Website</h3>
                 <p>Designed, built, and deployed the company's public-facing website. Handled the full process from frontend development to hosting setup, ensuring the site was live, responsive, and production-ready.</p>
                 <div class="tags">
@@ -490,7 +186,6 @@
                 </div>
             </div>
             <div class="project-card">
-                
                 <h3>Attendance System</h3>
                 <p>Web-based attendance tracker with employee check-in and check-out. Records are stored and managed through a SQL database, allowing the team to monitor attendance history and generate reports.</p>
                 <div class="tags">
@@ -535,7 +230,6 @@
                 <span class="edu-school">Udemy</span>
             </div>
         </div>
-        
     </section>
 
     <!-- CONTACT -->
@@ -551,6 +245,8 @@
     <footer>
         <p>Built by Shwe Yee · 2026</p>
     </footer>
+
+    <script src="script.js"></script>
 
 </body>
 </html>
