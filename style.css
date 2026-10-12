@@ -68,6 +68,7 @@ a { color: inherit; }
     height: 100%;
     object-fit: cover;
     object-position: center top;
+    transform: scale(1.2);}
    
 
 .waiting-girl { width: 52px; height: auto; overflow: visible; }
