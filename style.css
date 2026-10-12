@@ -209,8 +209,6 @@ main strong { color: var(--heading); font-weight: 700; }
     font-weight: 600;
     color: var(--heading);
     text-decoration: none;
-    border-bottom: 2px solid var(--heading);
-    padding-bottom: 2px;
     transition: opacity 0.2s;
 }
 .arrow-link:hover { opacity: 0.7; }
