@@ -1,25 +1,42 @@
+// Dark mode toggle (remembers your choice)
 const toggle = document.getElementById('mode-toggle');
-const moonIcon = toggle.querySelector('.icon-moon');
-const sunIcon = toggle.querySelector('.icon-sun');
 
 function setMode(dark) {
-    if (dark) {
-        document.body.classList.add('dark-mode');
-        moonIcon.style.display = 'none';
-        sunIcon.style.display = 'block';
-        localStorage.setItem('theme', 'dark');
-    } else {
-        document.body.classList.remove('dark-mode');
-        moonIcon.style.display = 'block';
-        sunIcon.style.display = 'none';
-        localStorage.setItem('theme', 'light');
-    }
+    document.body.classList.toggle('dark-mode', dark);
+    try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
 }
 
-const saved = localStorage.getItem('theme');
+let saved = null;
+try { saved = localStorage.getItem('theme'); } catch (e) {}
 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 setMode(saved === 'dark' || (!saved && prefersDark));
 
 toggle.addEventListener('click', () => {
     setMode(!document.body.classList.contains('dark-mode'));
 });
+
+// "My work" pills: click one to show its projects
+const chips = document.querySelectorAll('.chip[role="tab"]');
+chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+        chips.forEach((c) => {
+            const selected = c === chip;
+            c.setAttribute('aria-selected', selected);
+            document.getElementById(c.getAttribute('aria-controls')).hidden = !selected;
+        });
+    });
+});
+
+// Highlight the sidebar link for the section you are reading
+const links = document.querySelectorAll('.side-nav a');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            links.forEach((a) => {
+                a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+            });
+        }
+    });
+}, { rootMargin: '-40% 0px -55% 0px' });
+
+document.querySelectorAll('main section[id]').forEach((s) => observer.observe(s));
